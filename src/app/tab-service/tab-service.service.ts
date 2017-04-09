@@ -19,6 +19,18 @@ export class TabService {
 
         } else {
             for (let tab in aTabs) {
+                if (this.fulltab.tabs[this.fulltab.currentLine].eString.length >= this.fulltab.lineLength) {
+                    this.fulltab.tabs.push({
+                        heString : "e | -",
+                        bString : "B | -",
+                        gString : "G | -",
+                        dString : "D | -",
+                        aString : "A | -",
+                        eString : "E | -",
+                    })
+                    this.fulltab.currentLine++;
+                    this.fulltab.lines++;
+                }
                 if (aTabs[tab] === "E") {
                     let entryLength = tbuffer.length;
                     this.fulltab.tabs[this.fulltab.currentLine].eString += tbuffer.join("");
@@ -86,7 +98,7 @@ export class TabService {
                         this.fulltab.tabs[this.fulltab.currentLine].eString += "-";
                     }
                 } else if (aTabs[tab] === "L") {
-
+                    this.fulltab.lineLength = parseInt(tbuffer.join("")) + 5;
                 } else {
                     if (aTabs[tab] !== " ") {
                         tbuffer.push(aTabs[tab]);
@@ -97,6 +109,51 @@ export class TabService {
             }
         }
         
+    }
+
+    reconfigureTabs() {
+        let full = {
+            heString : "",
+            bString : "",
+            gString : "",
+            dString : "",
+            aString : "",
+            eString : "",
+        }
+
+        for (let i = 0; i < this.fulltab.tabs.length; i++) {
+            full.heString += this.fulltab.tabs[i].heString.substr(4);
+            full.bString += this.fulltab.tabs[i].bString.substr(4);
+            full.gString += this.fulltab.tabs[i].gString.substr(4);
+            full.dString += this.fulltab.tabs[i].dString.substr(4);
+            full.aString += this.fulltab.tabs[i].aString.substr(4);
+            full.eString += this.fulltab.tabs[i].eString.substr(4);
+        }
+
+        this.fulltab.tabs = [];
+        this.fulltab.currentLine = -1;
+        this.fulltab.lines = -1;
+        for (let i = 0; i < full.eString.length; i+=this.fulltab.lineLength) {
+            this.fulltab.currentLine++;
+            this.fulltab.lines++;
+            this.fulltab.tabs.push({
+                heString : "e | -",
+                bString : "B | -",
+                gString : "G | -",
+                dString : "D | -",
+                aString : "A | -",
+                eString : "E | -",
+            })
+            this.fulltab.tabs[this.fulltab.currentLine].heString += full.heString.substr(i, i+this.fulltab.lineLength);
+            this.fulltab.tabs[this.fulltab.currentLine].bString += full.bString.substr(i, i+this.fulltab.lineLength);
+            this.fulltab.tabs[this.fulltab.currentLine].gString += full.gString.substr(i, i+this.fulltab.lineLength);
+            this.fulltab.tabs[this.fulltab.currentLine].dString += full.dString.substr(i, i+this.fulltab.lineLength);
+            this.fulltab.tabs[this.fulltab.currentLine].aString += full.aString.substr(i, i+this.fulltab.lineLength);
+            this.fulltab.tabs[this.fulltab.currentLine].eString += full.eString.substr(i, i+this.fulltab.lineLength);
+            
+        }
+        
+
     }
 
     fulltab = {
