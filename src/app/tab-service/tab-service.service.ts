@@ -40,7 +40,11 @@ export class TabService {
                 } else if (aTabs[tab] === "L") {
                     
                 } else {
-                    tbuffer.push(aTabs[tab]);
+                    if (aTabs[tab] !== " ") {
+                        tbuffer.push(aTabs[tab]);
+                    } else {
+                        tbuffer.push("-");
+                    }
                 }
             }
         }
