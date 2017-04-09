@@ -5,6 +5,7 @@ A simple tool to quickly jot down guitar riffs using the way we say them outloud
 ## Usage
 
 Commands:
+
     clean : removes all tab stanzas
     delete : removes most recent stanza
     new : add a blank stanza below
