@@ -1,0 +1,11 @@
+<div class="col-9-sm">
+    <div class="input-group">
+        <input #tabs type="text" class="form-control" 
+            [value]="userInput" placeholder="2e 2 4b">
+        <span class="input-group-btn">
+            <button class="btn btn-primary" type="button"
+                (click)="onSubmit(tabs.value)"
+                >Tab!</button>
+        </span>
+    </div>
+</div>
