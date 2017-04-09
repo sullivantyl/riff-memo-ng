@@ -1,4 +1,4 @@
-# TabNg
+# Riff Memo
 
 A simple tool to quickly jot down guitar riffs using the way we say them outloud.
 
