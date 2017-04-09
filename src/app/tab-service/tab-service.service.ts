@@ -35,7 +35,23 @@ export class TabService {
                 })
             } else {
                 this.fulltab.currentLine--;
+                this.fulltab.lines--;
             }
+            tabEntry = "";
+        } else if (tabEntry.startsWith('clear')) {
+            while (this.fulltab.tabs[0] !== undefined) {
+                this.fulltab.tabs.pop();
+            }
+            this.fulltab.tabs.push({
+                heString : "e | -",
+                bString : "B | -",
+                gString : "G | -",
+                dString : "D | -",
+                aString : "A | -",
+                eString : "E | -",
+            })
+            this.fulltab.currentLine = 0;
+            this.fulltab.lines = 0;
             tabEntry = "";
         }
         let aTabs = Array.from(tabEntry);
