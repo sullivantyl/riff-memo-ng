@@ -10,8 +10,7 @@ export class TabService {
 
     parseTabs(tabEntry : string) {
         let tbuffer = [];
-        let aTabs = Array.from(tabEntry);
-        if (this.fulltab.tabs[this.fulltab.currentLine].eString.length >= this.fulltab.lineLength) {
+        if (this.fulltab.tabs[this.fulltab.currentLine].eString.length >= this.fulltab.lineLength || tabEntry.startsWith("new")) {
             this.fulltab.tabs.push({
                 heString : "e | -",
                 bString : "B | -",
@@ -22,7 +21,24 @@ export class TabService {
             })
             this.fulltab.currentLine++;
             this.fulltab.lines++;
+            tabEntry = "";
+        } else if (tabEntry.startsWith("delete")) {
+            this.fulltab.tabs.pop();
+            if (this.fulltab.tabs[0] === undefined) {
+                this.fulltab.tabs.push({
+                    heString : "e | -",
+                    bString : "B | -",
+                    gString : "G | -",
+                    dString : "D | -",
+                    aString : "A | -",
+                    eString : "E | -",
+                })
+            } else {
+                this.fulltab.currentLine--;
+            }
+            tabEntry = "";
         }
+        let aTabs = Array.from(tabEntry);
         if (tabEntry === " ") {
             this.fulltab.tabs[this.fulltab.currentLine].eString += "-";
             this.fulltab.tabs[this.fulltab.currentLine].aString += "-";
