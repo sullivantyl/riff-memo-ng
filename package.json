@@ -24,6 +24,8 @@
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
     "@types/node": "~6.0.60",
+    "bootstrap": "^3.3.7",
+    "ng2-bootstrap": "1.6.3",
     "systemjs": "0.20.12",
     "reflect-metadata": "0.1.10",
     "core-js": "^2.4.1",
