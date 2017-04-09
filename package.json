@@ -26,7 +26,7 @@
     "@angular/router": "^4.0.0",
     "@types/node": "~6.0.60",
     "bootstrap": "^3.3.7",
-    "ng2-bootstrap": "1.6.3",
+    "ngx-bootstrap": "1.6.5",
     "systemjs": "0.20.12",
     "reflect-metadata": "0.1.10",
     "core-js": "^2.4.1",
