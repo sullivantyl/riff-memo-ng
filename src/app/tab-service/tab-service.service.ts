@@ -99,6 +99,7 @@ export class TabService {
                     }
                 } else if (aTabs[tab] === "L") {
                     this.fulltab.lineLength = parseInt(tbuffer.join("")) + 5;
+                    tbuffer = [];
                 } else {
                     if (aTabs[tab] !== " ") {
                         tbuffer.push(aTabs[tab]);
