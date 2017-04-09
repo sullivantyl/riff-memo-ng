@@ -8,15 +8,15 @@ import { TabService } from '../tab-service/tab-service.service';
 })
 
 export class TabEntryComponent{
-    userInput : any;
+    userInput : string;
     constructor(private tabService : TabService) {}
 
     ngOnInit() {
-        this.userInput = "";
+        this.userInput = null;
     }
 
-    onSubmit(tabs : any) {
+    onSubmit(tabs : string, st : HTMLInputElement) {
+        st.value = null;
         this.tabService.add(tabs);
-        this.userInput = "";
     }
 }

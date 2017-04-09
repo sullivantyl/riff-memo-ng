@@ -1,10 +1,11 @@
 <div class="col-9-sm">
     <div class="input-group">
         <input #tabs type="text" class="form-control" 
-            [value]="userInput" placeholder="2e 2 4b">
+            [value]="userInput" placeholder="30L 2E 2 4e"
+            (keyup.enter)="onSubmit(tabs.value, tabs)">
         <span class="input-group-btn">
             <button class="btn btn-primary" type="button"
-                (click)="onSubmit(tabs.value)"
+                (click)="onSubmit(tabs.value, tabs)"
                 >Tab!</button>
         </span>
     </div>
