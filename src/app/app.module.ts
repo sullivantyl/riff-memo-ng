@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { TabEntryComponent } from './tab-entry/tab-entry.component';
 import { TabViewComponent } from './tab-view/tab-view.component';
 import { TabService } from './tab-service/tab-service.service';
+import { HelpPageComponent } from './help-page/help-page.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { TabService } from './tab-service/tab-service.service';
   declarations: [
     AppComponent,
     TabEntryComponent,
-    TabViewComponent
+    TabViewComponent,
+    HelpPageComponent
   ],
   providers: [
     TabService

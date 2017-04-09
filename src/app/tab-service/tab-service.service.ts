@@ -8,10 +8,53 @@ export class TabService {
         this.parseTabs(tabEntry);
     }
 
-    parseTabs(tabEntry : any) {
+    parseTabs(tabEntry : string) {
         let tbuffer = [];
         let aTabs = Array.from(tabEntry);
-        if (aTabs[0] === "\""){
+        if (this.fulltab.tabs[this.fulltab.currentLine].eString.length >= this.fulltab.lineLength) {
+            this.fulltab.tabs.push({
+                heString : "e | -",
+                bString : "B | -",
+                gString : "G | -",
+                dString : "D | -",
+                aString : "A | -",
+                eString : "E | -",
+            })
+            this.fulltab.currentLine++;
+            this.fulltab.lines++;
+        }
+        if (tabEntry === " ") {
+            this.fulltab.tabs[this.fulltab.currentLine].eString += "-";
+            this.fulltab.tabs[this.fulltab.currentLine].aString += "-";
+            this.fulltab.tabs[this.fulltab.currentLine].dString += "-";
+            this.fulltab.tabs[this.fulltab.currentLine].gString += "-";
+            this.fulltab.tabs[this.fulltab.currentLine].bString += "-";
+            this.fulltab.tabs[this.fulltab.currentLine].heString += "-"; 
+        } else if (aTabs[0] === "\""){
+            aTabs = tabEntry.replace("\"", '').replace("\"", '').split(" ");
+            let max = 1;
+            for (let tab in aTabs) {
+                if (aTabs[tab].length > max) {
+                    max = aTabs[tab].length;
+                }
+            }
+            for (let tab in aTabs) {
+                while (aTabs[tab].length < max) {
+                    aTabs[tab] = "-".concat(aTabs[tab]);
+                } if (aTabs[tab] !== null) {
+                    aTabs[tab] += "-";
+                }
+            }
+            let def = "";
+            for (let i = 0; i <= max; i++) {
+                def += "-";
+            }
+            this.fulltab.tabs[this.fulltab.currentLine].eString += aTabs[0] || def;
+            this.fulltab.tabs[this.fulltab.currentLine].aString += aTabs[1] || def;
+            this.fulltab.tabs[this.fulltab.currentLine].dString += aTabs[2] || def;
+            this.fulltab.tabs[this.fulltab.currentLine].gString += aTabs[3] || def;
+            this.fulltab.tabs[this.fulltab.currentLine].bString += aTabs[4] || def;
+            this.fulltab.tabs[this.fulltab.currentLine].heString += aTabs[5] || def;
 
         } else if (aTabs[0] === "U") {
 
@@ -19,18 +62,6 @@ export class TabService {
 
         } else {
             for (let tab in aTabs) {
-                if (this.fulltab.tabs[this.fulltab.currentLine].eString.length >= this.fulltab.lineLength) {
-                    this.fulltab.tabs.push({
-                        heString : "e | -",
-                        bString : "B | -",
-                        gString : "G | -",
-                        dString : "D | -",
-                        aString : "A | -",
-                        eString : "E | -",
-                    })
-                    this.fulltab.currentLine++;
-                    this.fulltab.lines++;
-                }
                 if (aTabs[tab] === "E") {
                     let entryLength = tbuffer.length;
                     this.fulltab.tabs[this.fulltab.currentLine].eString += tbuffer.join("");

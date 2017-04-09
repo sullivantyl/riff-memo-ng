@@ -9,6 +9,7 @@ import { TabService } from '../tab-service/tab-service.service';
 
 export class TabEntryComponent{
     userInput : string;
+    hideHelp : boolean = true;
     constructor(private tabService : TabService) {}
 
     ngOnInit() {
@@ -16,7 +17,13 @@ export class TabEntryComponent{
     }
 
     onSubmit(tabs : string, st : HTMLInputElement) {
+        if (tabs.startsWith("help")) {
+            this.hideHelp = !this.hideHelp;
+            console.log("help");
+        } else {
+            this.tabService.add(tabs);
+        }
         st.value = null;
-        this.tabService.add(tabs);
+        
     }
 }

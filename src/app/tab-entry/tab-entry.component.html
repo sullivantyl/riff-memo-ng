@@ -1,7 +1,7 @@
 <div class="col-9-sm">
     <div class="input-group">
         <input #tabs type="text" class="form-control" 
-            [value]="userInput" placeholder="30L 2E 2 4e"
+            [value]="userInput" placeholder="type 'help' to show or hide instructions"
             (keyup.enter)="onSubmit(tabs.value, tabs)">
         <span class="input-group-btn">
             <button class="btn btn-primary" type="button"
@@ -10,3 +10,4 @@
         </span>
     </div>
 </div>
+<help-page [hidden]="hideHelp" class="container-fluid"></help-page>
