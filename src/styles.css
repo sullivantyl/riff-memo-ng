@@ -5,3 +5,5 @@ body {
 #tabs {
     font-family: Courier, monospace;
 }
+
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';

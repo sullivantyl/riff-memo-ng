@@ -1,13 +1,15 @@
-<div class="col-9-sm">
-    <div class="input-group">
-        <input #tabs type="text" class="form-control" 
+
+<md-card class="input-group">
+    <md-input-container style="width: 100%">
+        <input mdInput #tabs type="text"
             [value]="userInput" placeholder="type 'help' to show or hide instructions"
             (keyup.enter)="onSubmit(tabs.value, tabs)">
-        <span class="input-group-btn">
-            <button class="btn btn-primary" type="button"
-                (click)="onSubmit(tabs.value, tabs)"
-                >Tab!</button>
-        </span>
-    </div>
-</div>
+    </md-input-container>
+    <span class="input-group-btn">
+        <button md-raised-button type="button"
+            (click)="onSubmit(tabs.value, tabs)"
+            >Tab!</button>
+    </span>
+</md-card>
+
 <help-page [hidden]="hideHelp" class="container-fluid"></help-page>
